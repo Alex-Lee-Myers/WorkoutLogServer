@@ -45,12 +45,13 @@ router.get("/", validateJWT, async (req, res) => {
 
 //! Required Endpoint #5
 //! GET one ID
-//TODO may need revised, doublechecked
-router.get("/:id", validateJWT, async (req, res) => {
+router.get("/:logID", validateJWT, async (req, res) => {
     const { id } = req.user
+    const logID = req.params.id;
     try {
         const query = {
             where: {
+                id: logID,
                 owner_id: id
             }
         };
